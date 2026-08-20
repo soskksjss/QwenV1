@@ -3,14 +3,14 @@ workflows:
     name: QWEN Android Build
     instance_type: mac_mini_m2
     environment:
-      flutter: stable
+      flutter: 3.24.5
     scripts:
       - name: Get dependencies
         script: |
           flutter pub get
       - name: Build Debug APK
         script: |
-          flutter build apk --debug --android-skip-build-dependency-validation
+          flutter build apk --debug
     artifacts:
       - build/app/outputs/flutter-apk/app-debug.apk
     publishing:
