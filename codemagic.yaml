@@ -3,11 +3,11 @@ workflows:
     name: QWEN Android Build
     instance_type: mac_mini_m2
     environment:
-      flutter: 3.24.5
+      flutter: stable
     scripts:
-      - name: Get dependencies
+      - name: Set up local properties
         script: |
-          flutter pub get
+          echo "flutter.sdk=$HOME/programs/flutter" > "$CM_BUILD_DIR/android/local.properties"
       - name: Build Debug APK
         script: |
           flutter build apk --debug
