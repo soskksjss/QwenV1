@@ -1,0 +1,21 @@
+workflows:
+  android-workflow:
+    name: QWEN Android Build
+    instance_type: mac_mini_m2
+    environment:
+      flutter: stable
+    scripts:
+      - name: Go to project folder and get dependencies
+        script: |
+          cd project_qwen
+          flutter pub get
+      - name: Build Debug APK
+        script: |
+          cd project_qwen
+          flutter build apk --debug
+    artifacts:
+      - project_qwen/build/app/outputs/flutter-apk/app-debug.apk
+    publishing:
+      email:
+        recipients:
+          - pankaj639783@gmail.com
